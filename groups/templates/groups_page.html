@@ -8,27 +8,28 @@
     </button>
 {% endif %}
 
-{% for group in groups_list %}
-    <div class="col-6">
 
-        <div class="card">
-            <p class="card-text">
-                id: {{ group.id }}<br>
-                Name of Groups: {{ group.name }}<br>
-                Description: {{ group.description }}
-            </p>
-            <p>
-                {% if request.user.is_authenticated %}
-                  <button type="button" class="btn btn-sm btn-success" onclick="">
-                    add group
-                  </button>
-                  <button type="button" class="btn btn-sm btn-success" onclick="">
-                    delete
-                  </button>
-                {% endif %}
-            </p>
-        </div>
-    </div>
-{% endfor %}
+<table border="1" width="100%" cellpadding="10">
+    <tr>
+        <th>id</th>
+        <th>name of group</th>
+        <th>group description</th>
+    </tr>
+    {% for group in groups_list %}
+        <tr>
+            <th>{{ group.id }}</th>
+            <th>{{ group.name }}</th>
+            <th>{{ group.description }}</th>
+            {% if request.user.is_authenticated %}
+            <th>><button type="button" class="btn btn-sm btn-success" onclick="">
+                add user
+            </button>
+            <th><button type="button" class="btn btn-sm btn-success" onclick="">
+                delete
+            </button>
+            {% endif %}
+        </tr>
+    {% endfor %}
+<table/>
 
 {% endblock %}

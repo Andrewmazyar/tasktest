@@ -8,27 +8,24 @@
     </button>
 {% endif %}
 
-{% for user in users_list %}
-    <div class="col-6">
 
-        <div class="card">
-            <p class="card-text">
-                Name of Groups: {{ user.user }}<br>
-                Description: {{ user.groups }}
-                data_of_created: {{ users.create }}
-            </p>
-            <p>
-                {% if request.user.is_authenticated %}
-                  <button type="button" class="btn btn-sm btn-success" onclick="">
-                    Edit
-                  </button>
-                  <button type="button" class="btn btn-sm btn-success" onclick="">
-                    Delete
-                  </button>
-                {% endif %}
-            </p>
-        </div>
-    </div>
-{% endfor %}
-
+<table border="1" width="100%" cellpadding="10">
+    <tr>
+        <th>name of Users</th>
+        <th>below to group</th>
+        <th>created</th>
+    </tr>
+    {% for user in users_list %}
+        <tr>
+            <th>{{ user.user }}</th>
+            <th>{{ user.groups }}</th>
+            <th>{{ user.create }}</th>
+            {% if request.user.is_authenticated %}
+            <th><button type="button" class="btn btn-sm btn-success" onclick="">
+                delete
+            </button>
+            {% endif %}
+        </tr>
+    {% endfor %}
+<table/>
 {% endblock %}
