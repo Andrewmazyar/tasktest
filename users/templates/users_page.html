@@ -2,6 +2,9 @@
 
 {% block main %}
 
+<a class="btn btn-sm btn-success" href="{% url 'groups' %}"
+role="button">Groups</a>
+
 {% if request.user.is_authenticated %}
     <button type="button" class="btn btn-sm btn-success" onclick="">
         Add User
